@@ -1,0 +1,191 @@
+size: '27'
+title: '&7Nâng Cấp'
+permission: 'core.upgrade'
+content:
+  upgrade:
+    #replace: {level} -> cấp độ hiện tại
+    #         {level_next} -> cấp độ tiếp theo
+    #         {level_cost} -> giá token để lên level
+    #         {level_nextValue} -> ví dụ: khi lên level tiếp thêm sẽ tăng 1.2 lần tỉ lệ custom item so với tỉ lệ gốc
+    #         {level_value} -> tỉ lệ của upgrade hiện tại
+    multiplier:
+      slot: '10'
+      display: '&aNhân Sản Lượng {level}'
+      material: 'GOLD_INGOT'
+      lore:
+        - ''
+        - '&7- Cấp Độ Hiện Tại: &6{level}'
+        - '&7- Nhân Sản Lượng Thu Được Lên &6{level_value} &7Lần!'
+        - ''
+        - '&7&m----------------------------------'
+        - ''
+        - '&6Nâng Cấp: &7{level}&6&m->&a{level_next}'
+        - '&6Nhân: &7x{level_value}&6&m->&ax{level_nextValue}'
+        - '&6Giá: &d{level_cost} Token'
+        - ''
+        - '&eCLICK Để Đặt Hàng'
+      glow: 'false'
+      amount: '{level}'
+    ci_drop:
+      slot: '11'
+      display: '&aVật Phẩm Đặt Biệt {level}'
+      material: 'DIAMOND'
+      lore:
+        - ''
+        - '&7- Cấp Độ Hiện Tại: &6{level}'
+        - '&7- Tỉ Lệ Nhận Được Vật Phẩm Đặt Biệt Tăng &6{level_value} &7Lần!'
+        - ''
+        - '&7&m----------------------------------'
+        - ''
+        - '&6Nâng Cấp: &7{level}&6&m->&a{level_next}'
+        - '&6Nhân: &7x{level_value}&6&m->&ax{level_nextValue}'
+        - '&6Giá: &d{level_cost} Token'
+        - ''
+        - '&eCLICK Để Đặt Hàng'
+      glow: 'false'
+      amount: '{level}'
+    token:
+      slot: '12'
+      display: '&aTỉ Lệ Nhận Được Token {level}'
+      material: 'EMERALD'
+      lore:
+        - ''
+        - '&7- Cấp Độ Hiện Tại: &6{level}'
+        - '&7- Tỉ Lệ &6{level_value}%&7!'
+        - ''
+        - '&7&m----------------------------------'
+        - ''
+        - '&6Nâng Cấp: &7{level}&6&m->&a{level_next}'
+        - '&6Tỉ Lệ: &7x{level_value}&6&m->&ax{level_nextValue}'
+        - '&6Giá: &d{level_cost} Token'
+        - ''
+        - '&eCLICK Để Đặt Hàng'
+      glow: 'false'
+      amount: '{level}'
+  deco-item: #deco ko giới hạn!
+    1:
+      slot: '0'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: []
+      glow: 'false'
+      amount: '1'
+    2:
+      slot: '1'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    3:
+      slot: '2'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    4:
+      slot: '3'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    5:
+      slot: '4'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    6:
+      slot: '5'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    7:
+      slot: '6'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    8:
+      slot: '7'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    9:
+      slot: '8'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    10:
+      slot: '18'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    11:
+      slot: '19'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    12:
+      slot: '20'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    13:
+      slot: '21'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    14:
+      slot: '22'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    15:
+      slot: '23'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    16:
+      slot: '24'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    17:
+      slot: '25'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'
+    18:
+      slot: '26'
+      display: '&a'
+      material: 'GRAY_STAINED_GLASS_PANE'
+      lore: [ ]
+      glow: 'false'
+      amount: '1'

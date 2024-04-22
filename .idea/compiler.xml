@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="_1_18_2NMS" />
+        <module name="Wrapper" />
+        <module name="plugin" />
+        <module name="_1_17_1NMS" />
+        <module name="_1_19_4NMS" />
+        <module name="_1_16_5NMS" />
+        <module name="_1_20_2NMS" />
+        <module name="_1_20_1NMS" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="nms1_20" target="17" />
+      <module name="nms_1_20" target="16" />
+      <module name="test" target="16" />
+      <module name="test2" target="16" />
+      <module name="untitled" target="1.8" />
+      <module name="untitled1" target="16" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

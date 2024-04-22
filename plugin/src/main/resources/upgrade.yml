@@ -1,0 +1,14 @@
+
+multiplier:
+  name: 'Nhân Sản Lượng'
+  cost: 50
+  value: 1 #mỗi lần nâng tăng 1 lần
+ci_drop:
+  name: 'Tỉ Lệ Rơi Vật Phẩm Đặc Biệt'
+  cost: 50
+  value: 1 #tăng 1%
+token:
+  name: 'Token'
+  default: 0 #0% ti le drop
+  cost: 100
+  value: 0.01 #tăng 0.01%

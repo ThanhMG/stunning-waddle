@@ -1,0 +1,10 @@
+name: DGCore
+version: '${project.version}'
+main: org.thanhmagics.DGCore
+commands:
+  core:
+    usage: /<command>
+  upgrade:
+    usage: /<command>
+  pvp:
+    usage: /<command>

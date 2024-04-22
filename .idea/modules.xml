@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DGCore.iml" filepath="$PROJECT_DIR$/DGCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Wrapper.iml" filepath="$PROJECT_DIR$/Wrapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1_16_5NMS.iml" filepath="$PROJECT_DIR$/_1_16_5NMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1_17_1NMS.iml" filepath="$PROJECT_DIR$/_1_17_1NMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1_18_2NMS.iml" filepath="$PROJECT_DIR$/_1_18_2NMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1_19_4NMS.iml" filepath="$PROJECT_DIR$/_1_19_4NMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1_20_1NMS/_1_20_1NMS.iml" filepath="$PROJECT_DIR$/_1_20_1NMS/_1_20_1NMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_1_20_2NMS/_1_20_2NMS.iml" filepath="$PROJECT_DIR$/_1_20_2NMS/_1_20_2NMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugin.iml" filepath="$PROJECT_DIR$/plugin.iml" />
+    </modules>
+  </component>
+</project>

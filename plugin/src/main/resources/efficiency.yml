@@ -1,0 +1,12 @@
+haste:
+  level: #<!> khi buff = 100 thì độ cưứng block = 0
+    1: #level
+      buff: 20 #giảm 20% độ cứng block
+    2:
+      buff: 40 #giảm 40%
+    3:
+      buff: 60
+    4:
+      buff: 70
+    5:
+      buff: 80

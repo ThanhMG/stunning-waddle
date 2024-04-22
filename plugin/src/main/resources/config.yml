@@ -1,0 +1,66 @@
+#placeholder-api: <!> replace {n} là chỉ có thể ghi số, {region} tên region đã đc tạo trước đó và k bị xóa
+# - %core_multiplier% -> trả lại số lượng nhân cảu player
+# - %core_timeleft% -> thời gian boost còn lại của player
+# - %core_mined% -> block đã đào (tính cả farm) của player
+# - %core_mined:{region}% -> số lượng đã mined trong region của player
+# - %core_top:{n}% -> tên người trên top n block đã mine (tính cả farm) (n từ 1 đến 10)
+# - %core_top:{n}:{region}% -> tên người trên top n block đã mine trong một region
+# - %core_player_top% -> top của player (block đã mined tính cả farm)
+# - %core_player_top:{region}% -> top của player trong region nào đó
+# - %core_player_level% -> tra lai level cua player
+# - %core_player_exp% -> tra lai tong exp ma player da nhan dc
+# - %core_require_level:{region}% -> level require cua region
+# - %core_nextLvl_exp% -> kinh nghiem can co de len lvl
+# - %core_nextLvl_block% -> block can co de len lvl
+#placeholder-dgcore: (do papi ko hỗ trợ)
+# - {core_itemlvl:MULTIPLE:{material}} -> trả lại cấp độ enchant của item (<!> chỉ sử dụng trong khi lore cho item)
+# - {core_itemlvl:DROP:{region}}       -> trả lại cấp độ enchant của item (<!> chỉ sử dụng trong khi lore cho item)
+# - {core_itemlvl:DROP}
+# - {core_iemlvl:MULTIPLE}
+placeholder:
+  papi: 'true'
+  dgcore: 'true'
+command:
+  admin:
+    - '&d&m<-------->&a&lDGCore&d&m<-------->'
+    - '&7- &6/core create [name]&7: Tạo Một Region Mới'
+    - '&7- &6/core edit [name]&7: Mở GUI Edit Cho Region Đã Tồn Tại'
+    - '&7- &6/core enchant DROP [player] [value] [region]'
+    - '&7- &6/core enchant MULTIPLIER [player] [value] [material]'
+    - '&7- &6/core delete [name]&7: Xóa Region'
+    - '&7- &6/core regions&7: Danh Sách Các Region Đã Đc Tạo'
+    - '&7- &6/core boost [player] [multi] [time]&7: thời gian ví dụ: 1h2m hoặc 3h0m hoặc 0h2m, phần multi nếu ghi là 0.2 thì có thêm 20% tỉ lệ drop x2'
+    - '&7- &6/core setPVPItem&7: Player Có Đủ Item Trong Túi Đồ Thì Tắt Đc PVP Trong Vài Phút'
+    - '&7- &6/core reload&7: reload config (plugin k có gì để reload)'
+pvp_off: '0h5m' #5 phút
+action_bar: '&6Đã Thu Hoạch: &a%core_mined% &6- &eBoost: x%core_multiplier% %core_timeleft% &f {amount} {name}' # ho tro papi
+boss_bar: '&aLevelUp: %core_nextLvl_block% block - %core_nextLvl_exp% exp - &6x%core_multiplier% (%core_timeleft%)' # ho tro papi
+message:
+  encNotEnough: #level (drop_amount) của item sử dụng để thu hoạch không đủ như yêu cầu
+    #replace: {level_require} -> cấp độ cần | {level} -> cấp độ hiện tại
+    - '&cLevel Của Dụng Cụ Không Đủ!&6 (yêu cầu: cấp {level_require})'
+  nonPermission:
+    - '&cBạn Không Đủ Quyền Hạn Để Sử Dụng Lệnh Này!'
+  resources_error:
+    - '&cBạn Không Đủ Token Để Mua {name}!'
+  nonLevel:
+    - '&cBạn Không Đủ Level Để Sử Dụng Khu Này!'
+  upgrade_success:
+    - '&aNâng Cấp {name} Thành Công!'
+  booster:
+    - '&aBạn Đã Được Boost &6{multi}&a Trong Khoảng Thời Gian &6{time}'
+  pvp_itemNotEnough:
+    - '&cVật Phẩm Trên Tay Không Đủ Để Kích Hoạt PVP OFF'
+  pvp_off_success:
+    - '&aThêm 5 Phút Vào Thời Gian Tắt PVP Thành Công!'
+  pvp_off_overtime:
+    - '&cĐã Hết Thời Gian Tắt PVP!'
+  pvp_on_sucess:
+    - '&aBật PVP Thành Công!'
+perm:
+  core.mul.1:
+    amount: 1 #cộng 1 vào multiplier
+    display: 'cộng x1'
+  core.mul.2:
+    amount: 2
+    display: 'cộng x2'
