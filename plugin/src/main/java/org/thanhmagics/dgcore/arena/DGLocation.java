@@ -22,15 +22,15 @@ public class DGLocation implements Serializable {
         this.z = z;
     }
 
-    public static DGLocation valueOf(String w,int x,int y,int z) {
+    public static DGLocation valueOf(String w, int x, int y, int z) {
         for (DGLocation location : locations) {
             if (location.w.equals(w) &&
-                location.x.equals(x) &&
-                location.y.equals(y) &&
-                location.z.equals(z))
+                    location.x.equals(x) &&
+                    location.y.equals(y) &&
+                    location.z.equals(z))
                 return location;
         }
-        DGLocation dgLocation = new DGLocation(w,x,y,z);
+        DGLocation dgLocation = new DGLocation(w, x, y, z);
         locations.add(dgLocation);
         return dgLocation;
     }
@@ -46,7 +46,7 @@ public class DGLocation implements Serializable {
     }
 
     public Location getLocation() {
-        return new Location(Bukkit.getWorld(w),x,y,z);
+        return new Location(Bukkit.getWorld(w), x, y, z);
     }
 
     public DGLocation setX(Integer x) {

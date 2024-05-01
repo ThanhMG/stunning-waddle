@@ -21,7 +21,7 @@ public abstract class Multiplier implements Serializable {
 
     public abstract long end();
 
-    public static void addMulti(DGPlayer player,long end,double multi) {
+    public static void addMulti(DGPlayer player, long end, double multi) {
         player.mul.add(new Multiplier() {
             @Override
             public double mul() {
@@ -35,14 +35,15 @@ public abstract class Multiplier implements Serializable {
         });
         player.reloadMultiplier();
     }
-    static Map<String,Integer> amount = new HashMap<>();
-    static Map<String,String> display = new HashMap<>();
+
+    static Map<String, Integer> amount = new HashMap<>();
+    static Map<String, String> display = new HashMap<>();
     static Map<DGPlayer, List<String>> perms = new HashMap<>();
 
     public static void asyncChecker() {
         for (String k1 : DGCore.getInstance().getConfig().getConfigurationSection("perm").getKeys(false)) {
-            amount.put(k1,DGCore.getInstance().getConfig().getInt("perm." + k1 + ".amount"));
-            display.put(k1,DGCore.getInstance().getConfig().getString("perm." + k1 + ".display"));
+            amount.put(k1, DGCore.getInstance().getConfig().getInt("perm." + k1 + ".amount"));
+            display.put(k1, DGCore.getInstance().getConfig().getString("perm." + k1 + ".display"));
         }
         new Thread(() -> {
             while (DGCore.getInstance().isEnabled()) {
@@ -92,7 +93,7 @@ public abstract class Multiplier implements Serializable {
                             if (dgPlayer.pvpOff < System.currentTimeMillis()) {
                                 Bukkit.getScheduler().runTask(DGCore.getInstance(), () -> {
                                     for (String s : DGCore.getInstance().getConfig().getStringList("message.pvp_off_overtime"))
-                                        Bukkit.getPlayer(dgPlayer.uuid).sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(dgPlayer.uuid),s)));
+                                        Bukkit.getPlayer(dgPlayer.uuid).sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(Bukkit.getPlayer(dgPlayer.uuid), s)));
                                 });
                                 dgPlayer.pvpOff = null;
                             }
@@ -103,7 +104,8 @@ public abstract class Multiplier implements Serializable {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } catch (ConcurrentModificationException ignored) {}
+                } catch (ConcurrentModificationException ignored) {
+                }
             }
         }).start();
     }

@@ -7,10 +7,10 @@ import java.util.Map;
 
 public class PlayerLevel {
 
-//    public static Map<Integer,Integer> value1 = new HashMap<>();
+    //    public static Map<Integer,Integer> value1 = new HashMap<>();
 //    public static Map<Integer,Integer> value2 = new HashMap<>();
 //
-    public static int mine,exp;
+    public static int mine, exp;
 
     public static void init(FileConfiguration config) {
 //        value1.put(1,0);

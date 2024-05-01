@@ -21,7 +21,7 @@ public class DefaultCommand implements CommandExecutor {
             new PlayerUpgradeGUI().open(player);
         } else {
             for (String str : DGCore.getInstance().getConfig().getStringList("message.nonPermission"))
-                player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player,str)));
+                player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player, str)));
         }
         return true;
     }

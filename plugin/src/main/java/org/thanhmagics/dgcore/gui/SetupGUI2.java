@@ -28,17 +28,18 @@ import java.util.*;
 
 public class SetupGUI2 implements Listener {
 
-    public static Map<UUID,SetupGUI2> guis = new HashMap<>();
+    public static Map<UUID, SetupGUI2> guis = new HashMap<>();
 
     public Arena arena;
+
     public void open(Player player, Arena arena) {
         DGPlayer dgPlayer = DGCore.getInstance().dataSerialize.player.get(player.getUniqueId().toString());
         this.arena = arena;
         UUID uuid = UUID.randomUUID();
-        guis.put(uuid,this);
-        Inventory inventory = Bukkit.createInventory(null,9*3,"Edit: " + arena.id);
+        guis.put(uuid, this);
+        Inventory inventory = Bukkit.createInventory(null, 9 * 3, "Edit: " + arena.id);
 
-        inventory.setItem(9,new ItemBuilder(XMaterial.EXPERIENCE_BOTTLE.parseMaterial())
+        inventory.setItem(9, new ItemBuilder(XMaterial.EXPERIENCE_BOTTLE.parseMaterial())
                 .setDisplayName("&aEXP Drop")
                 .addLore("")
                 .addLore("&eClick Để Xem Thêm")
@@ -53,7 +54,7 @@ public class SetupGUI2 implements Listener {
                 .addLore("")
                 .addLore(arena.data.regenMode.equals(RegenMode.TIME) ? "&7Giá Trị Đã Chọn:&6 " + (arena.data.regenCD_time / 1000) + "s" : (
                         arena.data.regenMode.equals(RegenMode.PER_BLOCK) ? "&7Cooldown:&6 " + arena.data.regenCD_per_block.values().toArray()[0] : ""
-                        ))
+                ))
                 .addLore("")
                 .addLore(arena.data.regenMode.equals(RegenMode.TIME) ? "&eRight-Click Để Thay Đổi Giá Trị" : arena.data.regenMode.equals(RegenMode.PER_BLOCK) ? "&eRight-Click Để Thay Đổi Giá Trị" : "")
                 .addLore("&eLeft-Click Vào Để Thay Đổi RegenMode")
@@ -110,23 +111,25 @@ public class SetupGUI2 implements Listener {
                 .addLore("")
                 .addLore("&eClick Để Xem Thêm")
                 .build());
-        ItemStack is = arena.data.default_drop != null ? ItemData.stringToIs(arena.data.default_drop) : null;
-        inventory.setItem(17, new ItemBuilder(is != null ? is.getType() : XMaterial.BARRIER.parseMaterial())
-                .setDisplayName("&aDefault Drop")
-                .addLore("")
-                .addLore("&7- Đã Chọn:&f " + (is != null ? ItemBuilder.getDisplayName(is) : "&cKhông Có"))
-                .addLore("")
-                .addLore("&eClick Vào Item Trong Inv Để Set Làm Default-Drop")
-                .setGlow(is != null && (is.getEnchantments().size() > 0)).setAmount(is != null ? is.getAmount() : 1).build());
+//        ItemStack is = arena.data.default_drop != null ? ItemData.stringToIs(arena.data.default_drop) : null;
+//        inventory.setItem(17, new ItemBuilder(is != null ? is.getType() : XMaterial.BARRIER.parseMaterial())
+//                .setDisplayName("&aDefault Drop")
+//                .addLore("")
+//                .addLore("&7- Đã Chọn:&f " + (is != null ? ItemBuilder.getDisplayName(is) : "&cKhông Có"))
+//                .addLore("")
+//                .addLore("&eClick Vào Item Trong Inv Để Set Làm Default-Drop")
+//                .setGlow(is != null && (is.getEnchantments().size() > 0)).setAmount(is != null ? is.getAmount() : 1).build());
         player.openInventory(inventory);
         dgPlayer.inv = uuid;
 
     }
+
     ItemStack pplus = new ItemBuilder("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzIzMzJiNzcwYTQ4NzQ2OTg4NjI4NTVkYTViM2ZlNDdmMTlhYjI5MWRmNzY2YjYwODNiNWY5YTBjM2M2ODQ3ZSJ9fX0=")
             .setDisplayName("&aThêm Drop")
             .addLore("")
             .addLore("&eClick Vào Item Trong Túi Đồ")
             .build();
+
     @EventHandler
     public void onEvent(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
@@ -170,7 +173,7 @@ public class SetupGUI2 implements Listener {
                             @Override
                             public void run(PlayerChatEvent event) {
                                 if (event.getMessage().equalsIgnoreCase("cancel")) {
-                                    instance.openGUI(dgPlayer,1);
+                                    instance.openGUI(dgPlayer, 1);
                                     return;
                                 }
                                 try {
@@ -184,7 +187,7 @@ public class SetupGUI2 implements Listener {
                             }
                         });
                     }
-                }, null, () -> new SetupGUI2().open(player,arena)).openGUI(dgPlayer,1);
+                }, null, () -> new SetupGUI2().open(player, arena)).openGUI(dgPlayer, 1);
             } else if (event.getSlot() == 10) {
                 if (event.getClick().equals(ClickType.LEFT)) {
                     if (arena.data.regenMode.equals(RegenMode.PER_BLOCK)) {
@@ -194,14 +197,14 @@ public class SetupGUI2 implements Listener {
                     } else {
                         arena.data.regenMode = RegenMode.PER_BLOCK;
                     }
-                    new SetupGUI2().open(player,arena);
+                    new SetupGUI2().open(player, arena);
                 } else if (event.getClick().equals(ClickType.RIGHT)) {
                     if (arena.data.regenMode.equals(RegenMode.TIME)) {
                         ChatListener.add(player, new ChatListener.Runnable() {
                             @Override
                             public void run(PlayerChatEvent event) {
                                 if (event.getMessage().equalsIgnoreCase("cancel")) {
-                                    new SetupGUI2().open(player,arena);
+                                    new SetupGUI2().open(player, arena);
                                     return;
                                 }
                                 try {
@@ -224,7 +227,7 @@ public class SetupGUI2 implements Listener {
                             @Override
                             public void run(PlayerChatEvent event) {
                                 if (event.getMessage().equalsIgnoreCase("cancel")) {
-                                    new SetupGUI2().open(player,arena);
+                                    new SetupGUI2().open(player, arena);
                                     return;
                                 }
                                 try {
@@ -234,9 +237,9 @@ public class SetupGUI2 implements Listener {
                                         player.closeInventory();
                                         return;
                                     }
-                                    Map<String,Integer> map = new HashMap<>();
+                                    Map<String, Integer> map = new HashMap<>();
                                     for (String s : arena.data.regenCD_per_block.keySet()) {
-                                        map.put(s,value);
+                                        map.put(s, value);
                                     }
                                     arena.data.regenCD_per_block = map;
                                     new SetupGUI2().open(player, arena);
@@ -252,17 +255,17 @@ public class SetupGUI2 implements Listener {
                     @Override
                     public void run(PlayerChatEvent e) {
                         if (e.getMessage().equalsIgnoreCase("cancel")) {
-                            new SetupGUI2().open(player,arena);
+                            new SetupGUI2().open(player, arena);
                             return;
                         }
                         try {
                             int level = Integer.parseInt(e.getMessage());
                             if (event.getClick().equals(ClickType.LEFT)) {
-                                arena.data.encRequire.replace(EnchantType.MULTIPLE,level);
+                                arena.data.encRequire.replace(EnchantType.MULTIPLE, level);
                             } else if (event.getClick().equals(ClickType.RIGHT)) {
-                                arena.data.encRequire.replace(EnchantType.DROP,level);
+                                arena.data.encRequire.replace(EnchantType.DROP, level);
                             }
-                            new SetupGUI2().open(player,arena);
+                            new SetupGUI2().open(player, arena);
                         } catch (Exception exc) {
                             player.sendMessage(Utils.applyColor("Không Thể Nhận Diện Số: " + e.getMessage()));
                         }
@@ -273,11 +276,11 @@ public class SetupGUI2 implements Listener {
                     @Override
                     public void run(PlayerChatEvent event) {
                         if (event.getMessage().equalsIgnoreCase("cancel")) {
-                            new SetupGUI2().open(player,arena);
+                            new SetupGUI2().open(player, arena);
                             return;
                         }
                         arena.data.levelRequire = Integer.parseInt(event.getMessage());
-                        new SetupGUI2().open(player,arena);
+                        new SetupGUI2().open(player, arena);
                     }
                 });
             } else if (event.getSlot() == 13) {
@@ -285,11 +288,11 @@ public class SetupGUI2 implements Listener {
                     @Override
                     public void run(PlayerChatEvent event) {
                         if (event.getMessage().equalsIgnoreCase("cancel")) {
-                            new SetupGUI2().open(player,arena);
+                            new SetupGUI2().open(player, arena);
                             return;
                         }
                         arena.data.permission = event.getMessage();
-                        new SetupGUI2().open(player,arena);
+                        new SetupGUI2().open(player, arena);
                     }
                 });
             } else if (event.getSlot() == 14) {
@@ -297,12 +300,12 @@ public class SetupGUI2 implements Listener {
                     @Override
                     public void run(PlayerChatEvent event) {
                         if (event.getMessage().equalsIgnoreCase("cancel")) {
-                            new SetupGUI2().open(player,arena);
+                            new SetupGUI2().open(player, arena);
                             return;
                         }
                         try {
                             arena.data.bbd = Integer.parseInt(event.getMessage());
-                            new SetupGUI2().open(player,arena);
+                            new SetupGUI2().open(player, arena);
                         } catch (Exception exc) {
                             player.sendMessage(Utils.applyColor("Không Thể Nhận Diện Số: " + event.getMessage()));
                         }
@@ -314,7 +317,7 @@ public class SetupGUI2 implements Listener {
                         @Override
                         public void run(PlayerChatEvent event) {
                             if (event.getMessage().equalsIgnoreCase("cancel")) {
-                                new SetupGUI2().open(player,arena);
+                                new SetupGUI2().open(player, arena);
                                 return;
                             }
                             String str = event.getMessage();
@@ -333,7 +336,7 @@ public class SetupGUI2 implements Listener {
                     } else {
                         arena.data.block_waiting = XMaterial.BEDROCK;
                     }
-                    new SetupGUI2().open(player,arena);
+                    new SetupGUI2().open(player, arena);
                 }
             } else if (event.getSlot() == 16) {
                 new SelectionGUI(new SelectionGUI.SG_Content() {
@@ -402,7 +405,7 @@ public class SetupGUI2 implements Listener {
                                     });
                                 } else if (clickType.equals(ClickType.RIGHT)) {
                                     list.remove(current);
-                                    instance.openGUI(dgPlayer,instance.page);
+                                    instance.openGUI(dgPlayer, instance.page);
                                 }
                             }
                         }, new SelectionGUI.SG_OnClick() {
@@ -410,19 +413,19 @@ public class SetupGUI2 implements Listener {
                             public void run(ItemStack clicked, int stt, ClickType clickType, SelectionGUI instance) {
                                 List<CIDropChance> list = arena.data.ciBlockDropChance.get(clickedd.getType().name());
                                 if (clicked != null && !clicked.getType().equals(Material.AIR)) {
-                                    list.add(new CIDropChance(ItemData.isToString(clicked),0.0));
-                                    instance.openGUI(dgPlayer,instance.page);
+                                    list.add(new CIDropChance(ItemData.isToString(clicked), 0.0));
+                                    instance.openGUI(dgPlayer, instance.page);
                                 }
                             }
-                        },() -> new SetupGUI2().open(player, arena)).openGUI(dgPlayer,1);
+                        }, () -> new SetupGUI2().open(player, arena)).openGUI(dgPlayer, 1);
                     }
-                },null,() -> new SetupGUI2().open(player,arena)).openGUI(dgPlayer,1);
+                }, null, () -> new SetupGUI2().open(player, arena)).openGUI(dgPlayer, 1);
             }
         } else {
-            if (event.getCurrentItem() != null) {
-                arena.data.default_drop = ItemData.isToString(event.getCurrentItem());
-                new SetupGUI2().open(player,arena);
-            }
+//            if (event.getCurrentItem() != null) {
+//                arena.data.default_drop = ItemData.isToString(event.getCurrentItem());
+//                new SetupGUI2().open(player,arena);
+//            }
         }
     }
 }

@@ -28,19 +28,21 @@ public class FileConfig {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                DGCore.getInstance().saveResource(fileName,true);
+                DGCore.getInstance().saveResource(fileName, true);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        list.add(this);
+        if (!list.contains(this)) {
+            list.add(this);
+        }
         this.config = YamlConfiguration.loadConfiguration(file);
         return this;
     }
 
     public static void reload() {
         for (FileConfig file : list) {
-            file.init();
+            file.config = YamlConfiguration.loadConfiguration(file.file);
         }
         DGCore.getInstance().reloadConfig();
     }

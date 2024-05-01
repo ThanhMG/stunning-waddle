@@ -59,12 +59,12 @@ public class Utils {
     public static boolean insideBox(DGLocation point, DGLocation l1, DGLocation l2, int deviation) {
         if (!l1.w.equals(l2.w)) return false;
         if (!point.w.equals(l1.w)) return false;
-        return insideBox(point.x,point.y,point.z,l1.x,l1.y,l1.z,l2.x,l2.y,l2.z,deviation);
+        return insideBox(point.x, point.y, point.z, l1.x, l1.y, l1.z, l2.x, l2.y, l2.z, deviation);
     }
 
-    public static boolean insideBox(int x1,int y1,int z1,int x2,int y2,int z2,int x3,int y3,int z3,int deviation) {
-        int maxX = Math.max(x2,x3) + deviation, minX = Math.min(x2, x3) - deviation;
-        int maxY = Math.max(y2,y3) + deviation, minY = Math.min(y2, y3) - deviation;
+    public static boolean insideBox(int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3, int deviation) {
+        int maxX = Math.max(x2, x3) + deviation, minX = Math.min(x2, x3) - deviation;
+        int maxY = Math.max(y2, y3) + deviation, minY = Math.min(y2, y3) - deviation;
         int maxZ = Math.max(z2, z3) + deviation, minZ = Math.min(z2, z3) - deviation;
         if (x1 >= minX && x1 <= maxX) {
             if (y1 >= minY && y1 <= maxY) {

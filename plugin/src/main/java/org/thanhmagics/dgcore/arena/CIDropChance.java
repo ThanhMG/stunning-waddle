@@ -7,7 +7,7 @@ public class CIDropChance implements Serializable {
 
     public Double chance;
 
- //   public boolean default_drop = false;
+    //   public boolean default_drop = false;
 
     public CIDropChance(String data, Double chance) {
         this.data = data;

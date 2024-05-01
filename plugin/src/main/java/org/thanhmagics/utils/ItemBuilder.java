@@ -195,7 +195,7 @@ public class ItemBuilder implements Serializable {
 
 
     public ItemStack skullWithValue(String value) {
-        return DGCore.getInstance().nmsManager.skullWithValue(value,XMaterial.PLAYER_HEAD.parseMaterial());
+        return DGCore.getInstance().nmsManager.skullWithValue(value, XMaterial.PLAYER_HEAD.parseMaterial());
     }
 
     public ItemStack build() {

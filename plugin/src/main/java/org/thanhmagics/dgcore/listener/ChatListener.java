@@ -11,16 +11,16 @@ import java.util.Map;
 
 public class ChatListener implements Listener {
 
-    private static Map<Player,Runnable> editor = new HashMap<>();
+    private static Map<Player, Runnable> editor = new HashMap<>();
 
-    public static void add(Player player,Runnable runnable) {
+    public static void add(Player player, Runnable runnable) {
         if (!editor.containsKey(player)) {
             player.closeInventory();
             player.sendMessage(Utils.applyColor("&6-----------------------"));
             player.sendMessage(Utils.applyColor("&aNhập Giá Trị Xuống Chat"));
             player.sendMessage(Utils.applyColor("&aNhập &6cancel&a Để Thoát!"));
             player.sendMessage(Utils.applyColor("&6-----------------------"));
-            editor.put(player,runnable);
+            editor.put(player, runnable);
         }
     }
 

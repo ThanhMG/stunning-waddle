@@ -22,19 +22,19 @@ public class PVPCommand implements CommandExecutor {
                 DGPlayer dg = DGCore.getInstance().dataSerialize.player.get(player.getUniqueId().toString());
                 dg.pvpOff = null;
                 for (String mess : DGCore.getInstance().getConfig().getStringList("message.pvp_on_sucess")) {
-                    player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player,mess)));
+                    player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player, mess)));
                 }
             } else if (strings[0].equalsIgnoreCase("off")) {
                 if (player.getInventory().getItemInMainHand().getType() != Material.AIR) {
                     if (DGCore.getInstance().dataSerialize.pvp_itemstack != null) {
                         ItemStack itemStack = ItemData.stringToIs(DGCore.getInstance().dataSerialize.pvp_itemstack);
-                        if (itemStack != null && itemEqual(itemStack,player.getInventory().getItemInMainHand())) {
+                        if (itemStack != null && itemEqual(itemStack, player.getInventory().getItemInMainHand())) {
                             if (itemStack.getAmount() <= player.getInventory().getItemInMainHand().getAmount()) {
                                 player.getInventory().getItemInMainHand().setAmount(
                                         player.getInventory().getItemInMainHand().getAmount() - itemStack.getAmount()
                                 );
                                 for (String mess : DGCore.getInstance().getConfig().getStringList("message.pvp_off_success")) {
-                                    player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player,mess)));
+                                    player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player, mess)));
                                 }
                                 DGPlayer dg = DGCore.getInstance().dataSerialize.player.get(player.getUniqueId().toString());
                                 if (dg.pvpOff == null) {
@@ -44,7 +44,7 @@ public class PVPCommand implements CommandExecutor {
                                 }
                             } else {
                                 for (String mess : DGCore.getInstance().getConfig().getStringList("message.pvp_itemNotEnough")) {
-                                    player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player,mess)));
+                                    player.sendMessage(Utils.applyColor(PlaceholderAPI.setPlaceholders(player, mess)));
                                 }
                             }
                         }
@@ -55,7 +55,7 @@ public class PVPCommand implements CommandExecutor {
         return true;
     }
 
-    private boolean itemEqual(ItemStack itemStack,ItemStack is) {
+    private boolean itemEqual(ItemStack itemStack, ItemStack is) {
         ItemStack i1 = itemStack.clone();
         i1.setAmount(1);
         ItemStack i2 = is.clone();

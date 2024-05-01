@@ -29,7 +29,7 @@ import java.util.Optional;
 public class AdminCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
-       // if (commandSender instanceof ConsoleCommandSender) return true;
+        // if (commandSender instanceof ConsoleCommandSender) return true;
         if (!commandSender.hasPermission("op") || !commandSender.hasPermission("core.admin")) {
             for (String str : DGCore.getInstance().getConfig().getStringList("command.nonPermission")) {
                 commandSender.sendMessage(Utils.applyColor(str));
@@ -61,10 +61,14 @@ public class AdminCommand implements CommandExecutor {
             } else if (args[0].equalsIgnoreCase("reload")) {
                 FileConfig.reload();
                 PlayerUpgrade.upgrades.clear();
-                new PlayerUpgrade("multiplier",DGCore.getInstance().upgrade_file.config, EnumUpgradeType.MULTIPLIER).init();
-                new PlayerUpgrade("ci_drop",DGCore.getInstance().upgrade_file.config, EnumUpgradeType.CI_DROP).init();
-                new PlayerUpgrade("token",DGCore.getInstance().upgrade_file.config, EnumUpgradeType.TOKEN).init();
-                commandSender.sendMessage(Utils.applyColor("&aReload Thành Công!"));
+                new PlayerUpgrade("multiplier", DGCore.getInstance().upgrade_file.config, EnumUpgradeType.MULTIPLIER).init();
+                new PlayerUpgrade("ci_drop", DGCore.getInstance().upgrade_file.config, EnumUpgradeType.CI_DROP).init();
+                new PlayerUpgrade("token", DGCore.getInstance().upgrade_file.config, EnumUpgradeType.TOKEN).init();
+                commandSender.sendMessage(Utils.applyColor("&aReload Thanh Cong!"));
+                return true;
+            } else if (args[0].equalsIgnoreCase("test")) {
+                commandSender.sendMessage(DGCore.getInstance().upgrade_gui.config.getString("abcxyz"));
+                return true;
             }
             for (String str : DGCore.getInstance().getConfig().getStringList("command.admin")) {
                 commandSender.sendMessage(Utils.applyColor(str));
@@ -97,7 +101,7 @@ public class AdminCommand implements CommandExecutor {
                         commandSender.sendMessage(Utils.applyColor("&cTên Chứa Kí Tự Không Hợp Lệ"));
                         return true;
                     }
-                    SelectPosition.editor.put(player.getUniqueId(), new ArrayList<>(Arrays.asList(new DGLocation(name,0,0,0))));
+                    SelectPosition.editor.put(player.getUniqueId(), new ArrayList<>(Arrays.asList(new DGLocation(name, 0, 0, 0))));
                     commandSender.sendMessage(Utils.applyColor("&aVui Lòng Phá Hủy 2 Block Tượng Trưng Cho 2 Pos Của Region"));
                 } else {
                     commandSender.sendMessage(Utils.applyColor("&cTên Đã Tồn Tại!"));
@@ -142,14 +146,14 @@ public class AdminCommand implements CommandExecutor {
                             if (xMaterial.isPresent()) {
                                 XMaterial material = xMaterial.get();
                                 double value = Double.parseDouble(args[3]);
-                                addNBT(commandSender,material.parseMaterial().name(),player,enchantType,String.valueOf(value));
+                                addNBT(commandSender, material.parseMaterial().name(), player, enchantType, String.valueOf(value));
                             } else {
                                 commandSender.sendMessage(Utils.applyColor("&cMaterial K Tồn Tại!"));
                             }
                         } else if (enchantType.equals(EnchantType.DROP)) {
                             double value = Double.parseDouble(args[3]);
                             if (DGCore.getInstance().arenas.containsKey(args[4].toLowerCase())) {
-                                addNBT(commandSender,args[4].toLowerCase(),player,enchantType, String.valueOf(value));
+                                addNBT(commandSender, args[4].toLowerCase(), player, enchantType, String.valueOf(value));
                             } else {
                                 commandSender.sendMessage(Utils.applyColor("&cRegion Không Tồn Tại!"));
                             }
@@ -170,12 +174,12 @@ public class AdminCommand implements CommandExecutor {
                     try {
                         double d = Double.parseDouble(args[2]);
                         String time = args[3];
-                        Multiplier.addMulti(dgPlayer,Long.sum(Utils.stringToMs(time), System.currentTimeMillis()),d);
+                        Multiplier.addMulti(dgPlayer, Long.sum(Utils.stringToMs(time), System.currentTimeMillis()), d);
                         if (p.isOnline()) {
                             for (String string : DGCore.getInstance().getConfig().getStringList("message.booster")) {
                                 p.getPlayer().sendMessage(Utils.applyColor(
-                                        PlaceholderAPI.setPlaceholders(p.getPlayer(),string.replace("{multi}",String.valueOf(d)))
-                                                .replace("{time}",time)
+                                        PlaceholderAPI.setPlaceholders(p.getPlayer(), string.replace("{multi}", String.valueOf(d)))
+                                                .replace("{time}", time)
                                 ));
                             }
                         }

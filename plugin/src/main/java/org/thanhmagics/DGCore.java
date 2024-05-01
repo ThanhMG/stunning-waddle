@@ -35,7 +35,7 @@ public final class DGCore extends JavaPlugin {
     public Map<String, Arena> arenas = new HashMap<>();
 
 
-    public FileConfig upgrade_file,upgrade_gui,block_name_file;
+    public FileConfig upgrade_file, upgrade_gui, block_name_file;
 
     @Override
     public void onEnable() {
@@ -45,22 +45,28 @@ public final class DGCore extends JavaPlugin {
         String version = getServer().getVersion();
         version = version.split("\\(")[1].split("\\)")[0].split("MC: ")[1];
         switch (version) {
-            case "1.20.1" -> {nmsManager = new _1_20_1NMS();
+            case "1.20.1" -> {
+                nmsManager = new _1_20_1NMS();
             }
-            case "1.20.2" -> {nmsManager = new _1_20_2NMS();
+            case "1.20.2" -> {
+                nmsManager = new _1_20_2NMS();
             }
-            case "1.19.4" -> {nmsManager = new _1_19_4NMS();
+            case "1.19.4" -> {
+                nmsManager = new _1_19_4NMS();
             }
-            case "1.18.2" -> {nmsManager = new _1_18_2NMS();
+            case "1.18.2" -> {
+                nmsManager = new _1_18_2NMS();
             }
-            case "1.17.1" -> {nmsManager = new _1_17_1NMS();
+            case "1.17.1" -> {
+                nmsManager = new _1_17_1NMS();
             }
-            case "1.16.5" -> {nmsManager = new _1_16_5NMS();
+            case "1.16.5" -> {
+                nmsManager = new _1_16_5NMS();
             }
         }
         if (nmsManager == null) {
             getServer().getPluginManager().disablePlugin(instance);
-            throw new RuntimeException("Khong Ho Tro Phien Ban: " +  version);
+            throw new RuntimeException("Khong Ho Tro Phien Ban: " + version);
         }
 
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
@@ -83,7 +89,7 @@ public final class DGCore extends JavaPlugin {
         }
         upgrade_file = (new FileConfig("upgrade.yml")).init();
         upgrade_gui = new FileConfig("upgrade_gui.yml").init();
-    //    efficiency_file = new FileConfig("efficiency.yml").init();
+        //    efficiency_file = new FileConfig("efficiency.yml").init();
         block_name_file = new FileConfig("block_name.yml").init();
         PacketReader packetReader = new PacketReader();
         getServer().getPluginManager().registerEvents(new SelectionGUI(null, 9, null, null, null), this);
@@ -91,17 +97,17 @@ public final class DGCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Listeners(), this);
         getServer().getPluginManager().registerEvents(new SelectPosition(), this);
         getServer().getPluginManager().registerEvents(packetReader, this);
-        getServer().getPluginManager().registerEvents(new PlayerUpgradeGUI(),this);
-        getServer().getPluginManager().registerEvents(new ChatListener(),this);
-        getServer().getPluginManager().registerEvents(new SetupGUI2(),this);
+        getServer().getPluginManager().registerEvents(new PlayerUpgradeGUI(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI2(), this);
         getCommand("core").setExecutor(new AdminCommand());
         getCommand("core").setTabCompleter(new ADCMTab());
         getCommand("upgrade").setExecutor(new DefaultCommand());
         getCommand("pvp").setExecutor(new PVPCommand());
         getCommand("pvp").setTabCompleter(new PVPCMTab());
-        new PlayerUpgrade("multiplier",upgrade_file.config, EnumUpgradeType.MULTIPLIER).init();
-        new PlayerUpgrade("ci_drop",upgrade_file.config, EnumUpgradeType.CI_DROP).init();
-        new PlayerUpgrade("token",upgrade_file.config, EnumUpgradeType.TOKEN).init();
+        new PlayerUpgrade("multiplier", upgrade_file.config, EnumUpgradeType.MULTIPLIER).init();
+        new PlayerUpgrade("ci_drop", upgrade_file.config, EnumUpgradeType.CI_DROP).init();
+        new PlayerUpgrade("token", upgrade_file.config, EnumUpgradeType.TOKEN).init();
         Arena.asyncBlockTrack();
         Listeners.init();
         Multiplier.asyncChecker();
@@ -114,7 +120,7 @@ public final class DGCore extends JavaPlugin {
             if (!DGCore.getInstance().dataSerialize.player.containsKey(player.getUniqueId().toString())) {
                 DGPlayer newplayer = new DGPlayer(player.getUniqueId());
                 for (Arena arena : DGCore.getInstance().arenas.values()) {
-                    newplayer.mined_in_region.put(arena.id,0);
+                    newplayer.mined_in_region.put(arena.id, 0);
                 }
                 DGCore.getInstance().dataSerialize.player.put(newplayer.uuid.toString(), newplayer);
                 newplayer.reloadMultiplier();
@@ -137,10 +143,7 @@ public final class DGCore extends JavaPlugin {
         }
         for (BossBar bossBar : Arena.bossBar.values())
             bossBar.removeAll();
-//        for (Player player : Bukkit.getOnlinePlayers())
-//            player.kickPlayer("Server Reload!");
     }
-
 
 
     public static DGCore getInstance() {

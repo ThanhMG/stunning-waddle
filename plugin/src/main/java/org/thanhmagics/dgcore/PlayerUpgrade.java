@@ -14,34 +14,34 @@ import java.util.*;
 
 public class PlayerUpgrade implements Serializable {
 
-    public static Map<EnumUpgradeType,PlayerUpgrade> upgrades = new HashMap<>();
+    public static Map<EnumUpgradeType, PlayerUpgrade> upgrades = new HashMap<>();
 
     public String filePath;
 //    public Map<Integer,Integer> cost = new HashMap<>();
 //
 //    public Map<Integer,Double> value = new HashMap<>();
 
- //   public Map<EnumUpgradeType,Integer> ct = new HashMap<>();
+    //   public Map<EnumUpgradeType,Integer> ct = new HashMap<>();
 
     public int ct;
     public double ve;
 
     public String name;
 
- //   public Map<EnumUpgradeType,Double> ve = new HashMap<>();
+    //   public Map<EnumUpgradeType,Double> ve = new HashMap<>();
 
     public FileConfiguration config;
 
     public EnumUpgradeType type;
 
-    public PlayerUpgrade(String filePath, FileConfiguration config,EnumUpgradeType type) {
+    public PlayerUpgrade(String filePath, FileConfiguration config, EnumUpgradeType type) {
         this.filePath = filePath;
         this.config = config;
         this.type = type;
     }
 
     public void init() {
-        upgrades.put(type,this);
+        upgrades.put(type, this);
         ct = config.getInt(type.name().toLowerCase() + ".cost");
         ve = config.getDouble(type.name().toLowerCase() + ".value");
         name = config.getString(type.name().toLowerCase() + ".name");
@@ -65,14 +65,14 @@ public class PlayerUpgrade implements Serializable {
 
     public String getValue(int level) {
         double value = ve * level;
-        return String.format("%.1f",value);
+        return String.format("%.1f", value);
     }
 
-    public String replacer(DGPlayer player,String input) {
-        return replacer(player,List.of(input)).get(0);
+    public String replacer(DGPlayer player, String input) {
+        return replacer(player, List.of(input)).get(0);
     }
 
-    public List<String> replacer(DGPlayer player,List<String> list) {
+    public List<String> replacer(DGPlayer player, List<String> list) {
         List<String> rs = new ArrayList<>();
         int lvl = player.playerUpgrades.get(type);
 //        boolean max_lvl = cost.size() <= lvl;
@@ -89,11 +89,11 @@ public class PlayerUpgrade implements Serializable {
 //                break;
 //            }
             if (str.contains("{max_lvl_lore}")) continue;
-            rs.add(str.replace("{level}",String.valueOf(lvl))
-                    .replace("{level_next}",String.valueOf((Integer.sum(lvl,1))))
-                    .replace("{level_cost}",String.valueOf(getCost(Integer.sum(lvl,1))))
-                    .replace("{level_value}",String.valueOf(getValue(lvl)))
-                    .replace("{level_nextValue}",String.valueOf(getValue(Integer.sum(lvl,1)))));
+            rs.add(str.replace("{level}", String.valueOf(lvl))
+                    .replace("{level_next}", String.valueOf((Integer.sum(lvl, 1))))
+                    .replace("{level_cost}", String.valueOf(getCost(Integer.sum(lvl, 1))))
+                    .replace("{level_value}", String.valueOf(getValue(lvl)))
+                    .replace("{level_nextValue}", String.valueOf(getValue(Integer.sum(lvl, 1)))));
         }
         return rs;
     }
@@ -103,7 +103,7 @@ public class PlayerUpgrade implements Serializable {
         List<String> lore = new ArrayList<>(is.getItemMeta().getLore());
         List<Integer> replaced = new ArrayList<>();
         int i = 0;
-        String string = DGCore.getInstance().nmsManager.nbtStorage().get(is,"DGReplacer");
+        String string = DGCore.getInstance().nmsManager.nbtStorage().get(is, "DGReplacer");
 //        if (string != null && string.length() > 0) {
 //            int integer = Integer.parseInt(string.split("▸")[0]);
 //            if (string.split("▸")[1].equals(is.getItemMeta().getLore().get(integer))) {
@@ -194,13 +194,13 @@ public class PlayerUpgrade implements Serializable {
                     }
                 }
             } else {
-                DGCore.getInstance().nmsManager.nbtStorage().remove(is,"DGReplacer");
+                DGCore.getInstance().nmsManager.nbtStorage().remove(is, "DGReplacer");
             }
         }
         for (String str : is.getItemMeta().getLore()) {
             if (replaced.contains(i)) continue;
             if (str.contains("{core_itemlvl:")) {
-                  is = DGCore.getInstance().nmsManager.nbtStorage().put(is,"DGReplacer", i + "▸" + str + "▸" + str + "▸" +"{core_itemlvl:"
+                is = DGCore.getInstance().nmsManager.nbtStorage().put(is, "DGReplacer", i + "▸" + str + "▸" + str + "▸" + "{core_itemlvl:"
                         + str.split("\\{core_itemlvl:")[1].split("}")[0]);
             }
             i++;

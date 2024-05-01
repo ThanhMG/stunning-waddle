@@ -26,7 +26,7 @@ public class PAPIHook extends PlaceholderExpansion {
 
 
     @Override
-    public String onRequest(OfflinePlayer player,String params) {
+    public String onRequest(OfflinePlayer player, String params) {
         DGPlayer dgPlayer = DGCore.getInstance().dataSerialize.player.get(player.getUniqueId().toString());
         if (params.equalsIgnoreCase("rank_boost")) {
             return String.valueOf(dgPlayer.display);
@@ -37,11 +37,11 @@ public class PAPIHook extends PlaceholderExpansion {
             return String.valueOf(dgPlayer.exp);
         } else if (params.equalsIgnoreCase("nextLvl_exp")) {
             int lvl = dgPlayer.level;
-            int integer = PlayerLevel.getExp(Integer.sum(lvl,1));
+            int integer = PlayerLevel.getExp(Integer.sum(lvl, 1));
             return String.valueOf((integer - dgPlayer.exp));
         } else if (params.equalsIgnoreCase("nextLvl_block")) {
             int lvl = dgPlayer.level;
-            int integer = PlayerLevel.getMine(Integer.sum(lvl,1));
+            int integer = PlayerLevel.getMine(Integer.sum(lvl, 1));
             return String.valueOf((integer - dgPlayer.mined));
         } else {
             if (params.equalsIgnoreCase("multiplier")) {

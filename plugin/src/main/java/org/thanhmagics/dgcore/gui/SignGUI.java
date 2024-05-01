@@ -27,7 +27,7 @@ public abstract class SignGUI {
 
 
     public SignGUI open(Player player) {
-        DGCore.getInstance().nmsManager.openSG(player, this,DGCore.getInstance(), XMaterial.OAK_SIGN.parseMaterial());
+        DGCore.getInstance().nmsManager.openSG(player, this, DGCore.getInstance(), XMaterial.OAK_SIGN.parseMaterial());
         return this;
     }
 }

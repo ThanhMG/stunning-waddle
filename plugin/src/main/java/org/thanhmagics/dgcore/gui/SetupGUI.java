@@ -37,7 +37,7 @@ public class SetupGUI implements Listener {
         Inventory inventory = Bukkit.createInventory(null, 9 * 3, "Setup GUI: " + arena.id);
         inventory.setItem(10, new ItemBuilder("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWQ5YjcxMmNkZjkxNDc3NTllYmE0ZDU1NzNjZGI2MzgzM2I0NGYzYWNlNGZjYjY2ZWEzYWIxNDcyMDdkYTNmZiJ9fX0=")
                 .setDisplayName("&aChỉnh Sửa Block")
-              //  .addLore("")
+                //  .addLore("")
                 .addLore("&7- thời gian đào của block")
                 .addLore("&7- exp drop của block")
                 .addLore("")
@@ -50,21 +50,21 @@ public class SetupGUI implements Listener {
                 .addLore((arena.data.regenMode.equals(RegenMode.TIME) ? "&a▸" : "&7") + "TIME &7(regen tất cả block sau 1 khoảng thời gian)")
                 .addLore((arena.data.regenMode.equals(RegenMode.EMPTY) ? "&a▸" : "&7") + "EMPTY &7(regen tất cả block khi đã đào hết)")
                 .addLore("")
-                        .addLore(arena.data.regenMode.equals(RegenMode.TIME) ? "&7Giá Trị Đã Chọn:&6 " + (arena.data.regenCD_time / 1000) + "s" : "")
-                        .addLore("")
-                        .addLore(arena.data.regenMode.equals(RegenMode.TIME) ? "&eRight-Click Để Thay Đổi Giá Trị" : "")
+                .addLore(arena.data.regenMode.equals(RegenMode.TIME) ? "&7Giá Trị Đã Chọn:&6 " + (arena.data.regenCD_time / 1000) + "s" : "")
+                .addLore("")
+                .addLore(arena.data.regenMode.equals(RegenMode.TIME) ? "&eRight-Click Để Thay Đổi Giá Trị" : "")
                 .addLore("&eLeft-Click Vào Để Thay Đổi RegenMode")
                 .build());
 
         inventory.setItem(12, new ItemBuilder(XMaterial.ENCHANTED_BOOK.parseMaterial())
                 .setDisplayName("&aYêu Cầu Enchant")
                 .addLore("&7- Chỉ Sử Dụng Item Đã Enc Mới Đào Được Trong Region")
-                        .addLore("")
-                        .addLore("&7Level Require Cho MULTIPLIER: &6" + arena.data.encRequire.get(EnchantType.MULTIPLE))
-                        .addLore("&7Level Require Cho DROP: &6" + arena.data.encRequire.get(EnchantType.DROP))
+                .addLore("")
+                .addLore("&7Level Require Cho MULTIPLIER: &6" + arena.data.encRequire.get(EnchantType.MULTIPLE))
+                .addLore("&7Level Require Cho DROP: &6" + arena.data.encRequire.get(EnchantType.DROP))
                 .addLore("")
                 .addLore("&eLEFT-CLICK Để Thay Đổi Giá Trị MULTIPLIER")
-                        .addLore("&eRIGHT-CLICK Để Thay Đổi Giá Trị DROP")
+                .addLore("&eRIGHT-CLICK Để Thay Đổi Giá Trị DROP")
                 .build());
 //        lore.addAll(Utils.stringList(arena.enchantRequire, 30));
 //        inventory.setItem(12, new ItemBuilder(XMaterial.ENCHANTED_BOOK.parseMaterial()).setGlow(true)
@@ -94,7 +94,7 @@ public class SetupGUI implements Listener {
                 .addLore("")
                 .addLore("&eClick Vào Để Thay Đổi")
                 .build());
-     //   lore.clear();
+        //   lore.clear();
 //        for (String key : arena.ciBlockDropChance.keySet()) {
 //            StringBuilder s = new StringBuilder("&f" + key + ": ");
 //            int l = key.length();
@@ -121,8 +121,8 @@ public class SetupGUI implements Listener {
                 .addLore("&7- Khi Đào Block Sẽ Không Drop Ra Những Item Cơ Bản Của Minecraft")
                 .addLore("&7  Thay Vào Đó Sẽ Drop Ra Những Thứ Này")
                 .addLore("&7- Default Drop: chắc chắn drop ra và là item đc multiple")
-             //   .addLore("")
-              //  .addLore(lore)
+                //   .addLore("")
+                //  .addLore(lore)
                 .addLore("")
                 .addLore("&eClick Vào Để Thay Đổi")
                 .build());
@@ -132,8 +132,8 @@ public class SetupGUI implements Listener {
                 .addLore("&7Player Đứng Gần Region Bao Nhiêu Block Sẽ Hiện BossBar")
                 .addLore("")
                 .addLore("&7- Khoảng Cách: &6" + arena.data.bbd + " block")
-                        .addLore("")
-                        .addLore("&eClick Để Thay Đổi Giá Trị")
+                .addLore("")
+                .addLore("&eClick Để Thay Đổi Giá Trị")
                 .build());
         inventory.setItem(17, new ItemBuilder(arena.data.block_waiting != null ? arena.data.block_waiting.parseMaterial() : XMaterial.BARRIER.parseMaterial())
                 .setDisplayName("&aBlock Chờ")
@@ -268,7 +268,7 @@ public class SetupGUI implements Listener {
                                     .setDisplayName("&f" + material.name().toLowerCase())
                                     .addLore("").addLore("&7- EXP Drop:&6 " + arena.data.expDrop.get(material.name()))
                                     .addLore(PacketReader.farm1.contains(XMaterial.matchXMaterial(material)) ? "&7- Các Loại Cây Trồng Không Cần Độ Cứng!" :
-                                            "&7- Độ Cứng Block: &6" + arena.data.miningSpeed.get(material.name()) / 1000  + "s")
+                                            "&7- Độ Cứng Block: &6" + arena.data.miningSpeed.get(material.name()) / 1000 + "s")
                                     .addLore("")
                                     .addLore(PacketReader.farm1.contains(XMaterial.matchXMaterial(material)) ? "" : "&eRight-Click Để Chỉnh Sửa Độ Cứng Của Block Này")
                                     .addLore("&eLeft-Click Để Chỉnh EXP Drop Cho Block")
@@ -318,10 +318,10 @@ public class SetupGUI implements Listener {
                                         player.sendMessage(Utils.applyColor("&cKhông Thể Nhận Dạng '" + lines.get(0) + "' Là Số Nào!"));
                                     }
                                 }
-                            }.setLine(1,"^^^^^").setLine(2,"Nhập Giá Trị").open(player);
+                            }.setLine(1, "^^^^^").setLine(2, "Nhập Giá Trị").open(player);
                         }
                     }
-                },null, () -> new SetupGUI().open(player,arena)).openGUI(dgPlayer,1);
+                }, null, () -> new SetupGUI().open(player, arena)).openGUI(dgPlayer, 1);
             } else if (slot == 11) {
                 if (event.getClick().equals(ClickType.LEFT)) {
                     if (arena.data.regenMode.equals(RegenMode.PER_BLOCK)) {
@@ -331,7 +331,7 @@ public class SetupGUI implements Listener {
                     } else {
                         arena.data.regenMode = RegenMode.PER_BLOCK;
                     }
-                    new SetupGUI().open(player,arena);
+                    new SetupGUI().open(player, arena);
                 } else if (event.getClick().equals(ClickType.RIGHT)) {
                     if (arena.data.regenMode.equals(RegenMode.TIME)) {
                         new SignGUI() {
@@ -346,12 +346,12 @@ public class SetupGUI implements Listener {
                                     }
                                     arena.data.regenCD_time = (value * 1000);
                                     arena.regenRegion = System.currentTimeMillis();
-                                    new SetupGUI().open(player,arena);
+                                    new SetupGUI().open(player, arena);
                                 } catch (Exception e) {
                                     player.sendMessage(Utils.applyColor("&cKhông Thể Nhận Dạng '" + lines.get(0) + "' Là Số Nào!"));
                                 }
                             }
-                        }.setLine(1,"^^^^^").setLine(2,"Nhập Giá Trị").open(player);
+                        }.setLine(1, "^^^^^").setLine(2, "Nhập Giá Trị").open(player);
                     }
                 }
             } else if (slot == 12) {
@@ -366,16 +366,16 @@ public class SetupGUI implements Listener {
                         try {
                             int level = Integer.parseInt(lines.get(0));
                             if (event.getClick().equals(ClickType.LEFT)) {
-                                arena.data.encRequire.replace(EnchantType.MULTIPLE,level);
+                                arena.data.encRequire.replace(EnchantType.MULTIPLE, level);
                             } else if (event.getClick().equals(ClickType.RIGHT)) {
-                                arena.data.encRequire.replace(EnchantType.DROP,level);
+                                arena.data.encRequire.replace(EnchantType.DROP, level);
                             }
-                            new SetupGUI().open(player,arena);
+                            new SetupGUI().open(player, arena);
                         } catch (Exception e) {
                             player.sendMessage(Utils.applyColor("Không Thể Nhận Diện Số: " + lines.get(0)));
                         }
                     }
-                }.setLine(1,"^^^^^").setLine(2,"Nhập Giá Trị").open(player);
+                }.setLine(1, "^^^^^").setLine(2, "Nhập Giá Trị").open(player);
 //                    new SignGUI() {
 //                        @Override
 //                        public void onClose(Player player, List<String> lines) {
@@ -406,7 +406,7 @@ public class SetupGUI implements Listener {
                             player.sendMessage(Utils.applyColor("&cKhông Thể Nhận Dạng '" + lines.get(0) + "' Là Số Nào!"));
                         }
                     }
-                }.setLine(1,"^^^^^").setLine(2,"Nhập Giá trị").open(player);
+                }.setLine(1, "^^^^^").setLine(2, "Nhập Giá trị").open(player);
 //                ItemStack plus = new ItemBuilder("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzIzMzJiNzcwYTQ4NzQ2OTg4NjI4NTVkYTViM2ZlNDdmMTlhYjI5MWRmNzY2YjYwODNiNWY5YTBjM2M2ODQ3ZSJ9fX0=")
 //                        .setDisplayName("&aThêm Custom Drop")
 //                        .addLore("")
@@ -571,7 +571,7 @@ public class SetupGUI implements Listener {
 //                                                .addLore("&7- Tỉ Lệ Đã Chọn: &6" + (ci.default_drop ? "&m" + ci.chance: ci.chance) + "%")
 //                                                        .addLore("&7- Default: &d" + ci.default_drop)
                                                 .addLore("")
-                                                        .addLore("&eSHIFT-CLICK để bật/tắt default drop")
+                                                .addLore("&eSHIFT-CLICK để bật/tắt default drop")
                                                 .addLore("&eLEFT-CLICK để chỉnh tỉ lệ drop")
                                                 .addLore("&eRIGHT-CLICK để xóa")
                                                 .build());
@@ -583,7 +583,7 @@ public class SetupGUI implements Listener {
                                 @Override
                                 public void run(ItemStack clicked, int stt, ClickType clickType, SelectionGUI instance) {
                                     //      if (arena.data.ciBlockDropChance.size() - 1 < stt - 9) return;
-                                    if (ItemBuilder.simpleEqual(clicked,pplus)) return;
+                                    if (ItemBuilder.simpleEqual(clicked, pplus)) return;
                                     int i = (stt - 9) + ((instance.size - 18) * (instance.page - 1));
                                     CIDropChance current = arena.data.ciBlockDropChance.get(k).get(i);
                                     if (clickType.equals(ClickType.LEFT)) {
@@ -612,7 +612,7 @@ public class SetupGUI implements Listener {
                                         instance.openGUI(dgPlayer, instance.page);
                                     } else if (clickType.equals(ClickType.SHIFT_LEFT) || clickType.equals(ClickType.SHIFT_RIGHT)) {
 //                                        current.default_drop = !current.default_drop;
-                                        instance.openGUI(dgPlayer,instance.page);
+                                        instance.openGUI(dgPlayer, instance.page);
                                     }
                                 }
                             }, new SelectionGUI.SG_OnClick() {
@@ -627,7 +627,7 @@ public class SetupGUI implements Listener {
                             }).openGUI(dgPlayer, 1);
                         } else if (clickType.equals(ClickType.RIGHT)) {
                             arena.data.ciBlockDropChance.remove(k);
-                            instance.openGUI(dgPlayer,1);
+                            instance.openGUI(dgPlayer, 1);
                         }
                     }
                 }, null, () -> {
@@ -644,12 +644,12 @@ public class SetupGUI implements Listener {
                                 return;
                             }
                             arena.data.bbd = d;
-                            new SetupGUI().open(player,arena);
+                            new SetupGUI().open(player, arena);
                         } catch (Exception e) {
                             player.sendMessage(Utils.applyColor("&cKo Thể Nhận Diện Chữ Số: " + lines.get(0)));
                         }
                     }
-                }.setLine(1,"^^^^^").setLine(2,"Nhập Giá Trị").open(player);
+                }.setLine(1, "^^^^^").setLine(2, "Nhập Giá Trị").open(player);
             } else if (slot == 17) {
                 if (event.getClick().equals(ClickType.LEFT)) {
                     new SignGUI() {
@@ -664,14 +664,14 @@ public class SetupGUI implements Listener {
                                 player.sendMessage(Utils.applyColor("&cMaterial Không Hợp Lệ"));
                             }
                         }
-                    }.setLine(1,"^^^^").setLine(2,"Nhập Tên Material").open(player);
+                    }.setLine(1, "^^^^").setLine(2, "Nhập Tên Material").open(player);
                 } else if (event.getClick().equals(ClickType.RIGHT)) {
                     if (arena.data.block_waiting != null) {
                         arena.data.block_waiting = null;
                     } else {
                         arena.data.block_waiting = XMaterial.BEDROCK;
                     }
-                    new SetupGUI().open(player,arena);
+                    new SetupGUI().open(player, arena);
                 }
             }
         }

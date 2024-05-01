@@ -49,7 +49,7 @@ public class Listeners implements Listener {
             for (Arena arena : DGCore.getInstance().arenas.values()) {
 //                for (String s : arena.data.regenCD.keySet())
 //                    map.put(s,0);
-                newplayer.mined_in_region.put(arena.id,0);
+                newplayer.mined_in_region.put(arena.id, 0);
             }
             DGCore.getInstance().dataSerialize.player.put(newplayer.uuid.toString(), newplayer);
             newplayer.reloadMultiplier();
@@ -94,8 +94,7 @@ public class Listeners implements Listener {
         Entity attacker = e.getDamager();
         Entity damaged = e.getEntity();
 
-        if(attacker instanceof Player && damaged instanceof Player)
-        {
+        if (attacker instanceof Player && damaged instanceof Player) {
             DGPlayer dgPlayer = DGCore.getInstance().dataSerialize.player.get(((Player) attacker).getPlayer().getUniqueId().toString());
             DGPlayer dg = DGCore.getInstance().dataSerialize.player.get(((Player) damaged).getPlayer().getUniqueId().toString());
 
@@ -116,35 +115,36 @@ public class Listeners implements Listener {
 
     public static void thread() {
         new Thread(() -> {
-           while (DGCore.getInstance().isEnabled()) {
-               for (Player player : Bukkit.getOnlinePlayers()) {
-                   for (ItemStack is : player.getInventory().getContents()) {
-                       int slot = -1;
-                       for (int i = 0; i < player.getInventory().getContents().length; i++) {
-                           if (player.getInventory().getContents()[i] != null) {
-                               if (player.getInventory().getContents()[i].equals(is)) slot = i;
-                           }
-                       }
-                       if (slot != -1) {
-                           player.getInventory().setItem(slot,PlayerUpgrade.loreReplacer(is));
-                       }
-                   }
-               }
-               try {
-                   Thread.sleep(500);
-               } catch (InterruptedException e) {
-                   throw new RuntimeException(e);
-               }
-           }
+            while (DGCore.getInstance().isEnabled()) {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    for (ItemStack is : player.getInventory().getContents()) {
+                        int slot = -1;
+                        for (int i = 0; i < player.getInventory().getContents().length; i++) {
+                            if (player.getInventory().getContents()[i] != null) {
+                                if (player.getInventory().getContents()[i].equals(is)) slot = i;
+                            }
+                        }
+                        if (slot != -1) {
+                            player.getInventory().setItem(slot, PlayerUpgrade.loreReplacer(is));
+                        }
+                    }
+                }
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }).start();
     }
-    public static Map<Block,Arena> inside = new HashMap<>();
+
+    public static Map<Block, Arena> inside = new HashMap<>();
 
     public static void init() {
         inside.clear();
         for (Arena arena : DGCore.getInstance().arenas.values()) {
             for (DGLocation dgLocation : arena.data.region.keySet()) {
-                inside.put(Bukkit.getWorld(dgLocation.w).getBlockAt(dgLocation.getLocation()),arena);
+                inside.put(Bukkit.getWorld(dgLocation.w).getBlockAt(dgLocation.getLocation()), arena);
             }
         }
     }

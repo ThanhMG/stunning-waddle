@@ -14,6 +14,6 @@ public class DataSerialize implements Serializable {
 
     public Map<String, ArenaData> arena = new HashMap<>();
 
-    public String pvp_itemstack=null;
+    public String pvp_itemstack = null;
 
 }
